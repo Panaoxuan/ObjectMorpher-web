@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ObjectMorpher: 3D-Aware Image Editing via Deformable 3DGS Models</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="has-text-centered">
+      <h1 class="title is-1 publication-title">ObjectMorpher: 3D-Aware Image Editing via Deformable 3DGS Models</h1>
+      <div class="title is-3"><strong>CVPR 2026</strong></div>
+      <div class="authors" style="text-align:center; line-height:1.7; font-size:1.08em;">
+        <div class="author-block"><a href="https://github.com/XavianXYH">Yuhuan Xie</a><sup>*</sup>,</div>
+        <div class="author-block"><a href="https://github.com/panaoxuan/my-website">Aoxuan Pan</a><sup>*</sup>,</div>
+        <div class="author-block"><a href="https://yihua7.github.io/website/">Yi-Hua Huang</a><sup>†</sup>,</div>
+        <div class="author-block"><a href="https://www.linkedin.com/in/chirui-chang-18529b21b/">Chirui Chang</a><sup> </sup>,</div>
+        <div class="author-block"><a href="https://daipengwa.github.io/">Peng Dai</a><sup> </sup>,</div>
+        <div class="author-block"><a href="https://xinyu-andy.github.io/">Xin Yu</a><sup> </sup>,</div>
+        
+        <div class="author-block"><a href="https://xjqi.github.io/">Xiaojuan Qi</a><sup>#</sup></div>
+        <br>
+        <span class="affiliations" style="font-size:0.97em; color:#666;">
+          <sup>1</sup>The University of Hong Kong,
+        </span>
+        <br>
+        <span style="font-size:0.95em;color:#888;">*Equal Contribution, †Project Leader, #Corresponding Author</span>
+      </div>
+      <div class="is-size-5 publication-authors">
+        <sup>1</sup> <a href="https://www.hku.hk/"><img style="width:12%; padding-right: 15px; vertical-align: middle;" src="materials/logo/HKU.png" alt="HKU Logo"></a>
+      </div>
+    </div>
+    <div class="column has-text-centered">
+      <div class="publication-links">
+        <span class="link-block">
+          <a href="https://github.com/Panaoxuan/ObjectMorpher" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fas fa-file-pdf"></i>
+            </span>
+            <span>Paper</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://github.com/Panaoxuan/ObjectMorpher" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="ai ai-arxiv"></i>
+            </span>
+            <span>arXiv</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://github.com/Panaoxuan/ObjectMorpher" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fab fa-youtube"></i>
+            </span>
+            <span>Video</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://github.com/Panaoxuan/ObjectMorpher" class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>Code</span>
+          </a>
+        </span>
+      </div>
+    </div>
+<style>
+  .editing-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .editing-row img {
+    width: 25%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  .editing-row.second {
+    margin-bottom: 2rem;
+  }
+  .editing-row.second img {
+    width: 50%;
+  }
+</style>
+
+    
+    <!-- Inserted Image Above Abstract -->
+    <section class="section" style="margin-bottom: 0rem; padding-bottom: 0rem;">
+      <div class="container">
+        <div class="content has-text-centered">
+          <img src="materials/images/teaser.png" alt="teaser" style="width:100%; height:auto;">
+        </div>
+      </div>
+    </section>
+    <!-- End of Inserted Image Above Abstract -->
+
+    <!-- Abstract Section -->
+    <section class="section" style="margin-top: 0rem;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Achieving precise, object-level control in image editing remains challenging: 2D methods lack 3D awareness and often yield ambiguous or implausible results, while existing 3D-aware approaches rely on heavy optimization or incomplete monocular reconstructions. We present ObjectMorpher, a unified, interactive framework that converts ambiguous 2D edits into geometry-grounded operations. ObjectMorpher lifts target instances with an image-to-3D generator into editable 3D Gaussian Splatting (3DGS), enabling fast, identity-preserving manipulation. Users drag control points; a graph-based non-rigid deformation with as-rigid-as-possible (ARAP) constraints ensures physically sensible shape and pose changes. A composite diffusion module harmonizes lighting, color, and boundaries for seamless reintegration. Across diverse categories, ObjectMorpher delivers fine-grained, photorealistic edits with superior controllability and efficiency, outperforming 2D drag and 3D-aware baselines on KID, LPIPS, SIFID, and user preference.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="margin-bottom: 0rem; padding-bottom: 0rem;">
+      <div class="container">
+        <div class="content has-text-centered">
+          <h2 class="title is-3">Pipeline</h2>
+          <p>
+            The object is lifted from 2D pixels to high-fidelity 3DGS. Real-time editing with local rigidity is applied based on user input. The object is then repositioned, and a generative model refines the edits for harmonious results.
+          </p>
+          <img src="materials/images/pipeline.png" alt="pipeline" style="width:100%; height:auto;">
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Interactive Editing</h2>
+          <div id="results-carousel" class="carousel2 results-carousel">
+            <div class="item item-steve" style="width: 80%; margin: 0 auto; text-align: center;">
+              <video poster="" id="steve" autoplay controls muted loop style="width: 100%; height: auto;">
+                <source src="./materials/video/presentation.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <section class="section">
+    <div class="column is-full-width has-text-centered">
+      <h2 class="title is-3">Results</h2>
+        <div class="content has-text-centered">
+          <img src="materials/images/result.png" alt="teaser" style="width:100%; height:auto;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- BibTeX Section -->
+    <!-- <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>
+}</code></pre>
+      </div>
+    </section>
+  </div> -->
+
+  <!-- Acknowledgements Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </p>
+        <p>
+          The source code of this website is borrowed from <a href="https://nerfies.github.io/">nerfies</a> and <a href="https://yihua7.github.io/SC-GS-web/">SC-GS</a>. We thank the authors for sharing the template.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
